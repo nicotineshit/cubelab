@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10131a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>CubeLab</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">✦</span><div><b>CubeLab</b><small>Тренируйся. Собирай. Улучшайся.</small></div></div>
+    <span class="offline" id="network">● Онлайн</span>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SPEEDCUBING TOOLKIT</p>
+      <h1>Твой куб.<br><em>Твои рекорды.</em></h1>
+      <p class="sub">Скремблы и тренировка CFOP в одном месте.</p>
+    </section>
+
+    <nav class="tabs" aria-label="Разделы">
+      <button class="tab active" data-tab="scramble">Скремблы</button>
+      <button class="tab" data-tab="trainer">OLL / PLL</button>
+    </nav>
+
+    <section id="scramble" class="panel">
+      <div class="panel-head"><div><p class="eyebrow">ГЕНЕРАТОР</p><h2>Новый скрембл</h2></div></div>
+      <label for="size">Размер кубика</label>
+      <select id="size">
+        <option value="2">2×2</option><option value="3" selected>3×3</option>
+        <option value="4">4×4</option><option value="5">5×5</option>
+        <option value="6">6×6</option><option value="7">7×7</option>
+      </select>
+      <div class="scramble" id="scrambleText">Нажми «Создать скрембл»</div>
+      <div class="actions">
+        <button class="primary" id="newScramble">Создать скрембл</button>
+        <button class="secondary" id="copyScramble">Копировать</button>
+      </div>
+      <p class="hint" id="scrambleHint">Генератор тренировочных последовательностей. Для официальных соревнований используй скремблы WCA.</p>
+    </section>
+
+    <section id="trainer" class="panel hidden">
+      <p class="eyebrow">CFOP TRAINER</p><h2>OLL / PLL</h2>
+      <p class="sub">Раздел тренировки будет добавлен после подключения и проверки полной базы алгоритмов и точных схем.</p>
+      <div class="notice">Важно: здесь не будет случайных картинок и непроверенных алгоритмов. Каждый случай должен соответствовать своей схеме.</div>
+      <div class="actions">
+        <button class="secondary" id="showPlan">Что войдёт в тренажёр</button>
+      </div>
+      <ul id="plan" class="plan hidden">
+        <li>57 случаев OLL с правильной ориентацией последнего слоя</li>
+        <li>21 случай PLL с полностью жёлтой верхней гранью</li>
+        <li>Визуализация верхнего слоя и боковых наклеек</li>
+        <li>Алгоритмы с проверкой на симуляторе кубика</li>
+      </ul>
+    </section>
+    <footer>CubeLab · версия 0.1 · основа проекта</footer>
+  </main>
+  <script src="./app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+    }
+  </script>
+</body>
+</html>
